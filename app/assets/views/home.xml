@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<lcui-app>
+  <ui>
+    <home>
+      <w class="container">
+        <about />
+        <w class="input-group">
+          <textview>Enter a message and save it.</textview>
+          <textedit ref="input-message" placeholder="eg: hello, world!" />
+          <button ref="btn-save-message">Save</button>
+          <textview ref="feedback" class="feedback">Message has been saved!</textview>
+        </w>
+      </w>
+    </home>
+  </ui>
+</lcui-app>

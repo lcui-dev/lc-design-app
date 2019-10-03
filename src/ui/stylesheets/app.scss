@@ -1,0 +1,32 @@
+@import "variables";
+@import "components";
+@import "views";
+
+textview, a {
+  color: $primary-text-color;
+}
+
+.input-group {
+  padding: 5px;
+  margin: -5px -5px 5px -5px;
+
+  textview {
+    margin-bottom: 10px;
+  }
+  .feedback {
+    color: $green;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+}
+
+.container {
+  max-width: 700px;
+  padding: 0 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+root {
+  background-color: #f6f8fa;
+}

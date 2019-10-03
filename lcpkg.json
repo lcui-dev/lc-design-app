@@ -1,0 +1,27 @@
+{
+  "name": "lc-design-app",
+  "version": "0.1.0",
+  "description": "A minimal LCUI application",
+  "author": "lc-soft",
+  "homepage": "https://github.com/lc-ui/lcui-quick-start",
+  "bugs": {
+    "url": "https://github.com/lc-ui/lcui-quick-start/issues"
+  },
+  "arch": [
+    "x86",
+    "x64"
+  ],
+  "platform": [
+    "windows",
+    "uwp",
+    "linux"
+  ],
+  "mode": [
+    "debug",
+    "release"
+  ],
+  "scripts": {
+    "start": "node ./scripts/start.js"
+  },
+  "private": true
+}

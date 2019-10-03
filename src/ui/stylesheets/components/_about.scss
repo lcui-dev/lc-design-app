@@ -1,0 +1,49 @@
+.c-about {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
+.c-about__item {
+  padding: 10px 20px;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+a.c-about__item {
+  &:hover {
+    background-color: #fafafa;
+  }
+  &:active {
+    background-color: #f8faff;
+  }
+}
+
+.c-about__meta {
+  margin-top: 10px;
+
+  textview {
+    color: $secondary-text-color;
+    font-size: 12px;
+  }
+}
+
+.c-about__icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  display: inline-block;
+  background-size: contain;
+  background-position: center;
+  background-image: url(../images/logo.png);
+}
+
+.c-about__name {
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}

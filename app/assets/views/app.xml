@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<lcui-app>
+  <resource type="text/css" src="assets/stylesheets/app.css"/>
+  <ui>
+    <resource type="text/xml" src="assets/views/home.xml"/>
+  </ui>
+</lcui-app>
