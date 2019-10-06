@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <LCUI.h>
-#include <LCUI/gui/widget.h>
+#include <LCDesign.h>
 #include <LCUI/gui/widget/textview.h>
 #include "version.h"
 #include "about.h"
@@ -63,16 +63,22 @@ void About_OnInit(LCUI_Widget w)
 	Widget_Append(item, meta);
 	Widget_Append(w, item);
 
+	icon = LCUIWidget_New("icon");
 	homepage = LCUIWidget_New("a");
+	Icon_SetName(icon, "open-in-new");
 	Widget_AddClass(homepage, "c-about__item");
 	TextView_SetText(homepage, "Visit homepage");
 	Widget_SetAttribute(homepage, "href", APP_HOMEPAGE);
+	Widget_Append(homepage, icon);
 	Widget_Append(w, homepage);
 
+	icon = LCUIWidget_New("icon");
 	bugs_url = LCUIWidget_New("a");
+	Icon_SetName(icon, "open-in-new");
 	Widget_AddClass(bugs_url, "c-about__item");
 	TextView_SetText(bugs_url, "Report an issue");
 	Widget_SetAttribute(bugs_url, "href", APP_BUGS_URL);
+	Widget_Append(bugs_url, icon);
 	Widget_Append(w, bugs_url);
 
 	Widget_AddClass(w, "c-about");

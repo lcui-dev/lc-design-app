@@ -38,8 +38,10 @@ if(WIN32)
         AppLib
         optimized LCUI
         optimized LCUIMain
+        optimized LCDesign
         debug "${LCPKG_DIR}/debug/lib/LCUI.lib"
         debug "${LCPKG_DIR}/debug/lib/LCUIMain.lib"
+        debug "${LCPKG_DIR}/debug/lib/LCDesign.lib"
     )
 else()
     target_link_libraries(
@@ -49,6 +51,8 @@ else()
         AppUIComponents
         AppLib
         debug "${LCPKG_DIR}/debug/lib/LCUI"
+        debug "${LCPKG_DIR}/debug/lib/LCDesign"
         optimized LCUI
+        optimized LCDesign
     )
 endif(WIN32)

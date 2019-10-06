@@ -1,4 +1,5 @@
 #include <LCUI.h>
+#include <LCDesign.h>
 #include <LCUI/gui/widget.h>
 #include <LCUI/gui/builder.h>
 #include "version.h"
@@ -10,6 +11,7 @@ int UI_Init(void)
     LCUI_Widget wrapper;
 
     LCUI_Init();
+    LCDesign_Init();
     UI_InitComponents();
     UI_InitViews();
     wrapper = LCUIBuilder_LoadFile("assets/views/app.xml");

@@ -9,6 +9,8 @@
 typedef struct HomeViewRec_ {
 	LCUI_Widget input;
 	LCUI_Widget feedback;
+	LCUI_Widget tabs;
+	LCUI_Widget tab_content;
 
 	struct store store;
 	int feedback_timer;
@@ -43,7 +45,52 @@ static void OnBtnSaveClick(LCUI_Widget w, LCUI_WidgetEvent e, void *unused)
 		LCUITimer_Free(self->feedback_timer);
 	}
 	Widget_Show(self->feedback);
-	self->feedback_timer = LCUI_SetTimeout(2000, OnFeedbackTimeout, e->data);
+	self->feedback_timer =
+	    LCUI_SetTimeout(2000, OnFeedbackTimeout, e->data);
+}
+
+static void HomeView_OnEachTab(LCUI_Widget w, void *arg)
+{
+	const char *target;
+
+	if (!Widget_HasClass(w, "nav-link")) {
+		return;
+	}
+	target = Widget_GetAttribute(w, "data-target");
+	if (target && strcmp(target, arg) == 0) {
+		Widget_AddClass(w, "active");
+	} else {
+		Widget_RemoveClass(w, "active");
+	}
+}
+
+static void HomeView_SetTab(LCUI_Widget w, const char *tabname)
+{
+	HomeView self;
+	LCUI_Widget child;
+	LinkedListNode *node;
+
+	self = Widget_GetData(w, home_view_proto);
+	Widget_Each(self->tabs, HomeView_OnEachTab, (void *)tabname);
+	for (LinkedList_Each(node, &self->tab_content->children)) {
+		child = node->data;
+		if (!Widget_HasClass(child, "tab-pane")) {
+			return;
+		}
+		if (child->id && strcmp(child->id, tabname) == 0) {
+			Widget_AddClass(child, "active");
+		} else {
+			Widget_RemoveClass(child, "active");
+		}
+	}
+}
+
+static void HomeView_OnTabClick(LCUI_Widget w, LCUI_WidgetEvent e, void *arg)
+{
+	if (Widget_HasClass(e->target, "nav-link")) {
+		HomeView_SetTab(e->data,
+				Widget_GetAttribute(e->target, "data-target"));
+	}
 }
 
 static void HomeView_OnReady(LCUI_Widget w, LCUI_WidgetEvent e, void *arg)
@@ -59,12 +106,15 @@ static void HomeView_OnReady(LCUI_Widget w, LCUI_WidgetEvent e, void *arg)
 	}
 	dict = Widget_CollectReferences(w);
 	btn = Dict_FetchValue(dict, "btn-save-message");
+	self->tabs = Dict_FetchValue(dict, "tabs");
+	self->tab_content = Dict_FetchValue(dict, "tab-content");
 	self->input = Dict_FetchValue(dict, "input-message");
 	self->feedback = Dict_FetchValue(dict, "feedback");
 	Widget_BindEvent(btn, "click", OnBtnSaveClick, w, NULL);
 	TextEdit_SetText(self->input, self->store.message);
 	Widget_Hide(self->feedback);
 	Widget_UnbindEvent(w, "ready", HomeView_OnReady);
+	Widget_BindEvent(self->tabs, "click", HomeView_OnTabClick, w, NULL);
 	Dict_Release(dict);
 }
 

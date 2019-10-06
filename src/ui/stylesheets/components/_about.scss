@@ -1,8 +1,8 @@
 .c-about {
   background-color: #fff;
+  border: 1px solid rgba(0,0,0,.125);
   border-radius: 5px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .c-about__item {
@@ -11,6 +11,14 @@
 
   &:last-child {
     border-bottom: 0;
+  }
+  .icon {
+    top: 10px;
+    right: 20px;
+    position: absolute;
+    color: #6e6e6e;
+    font-size: 18px;
+    line-height: 22px;
   }
 }
 
@@ -29,6 +37,7 @@ a.c-about__item {
   textview {
     color: $secondary-text-color;
     font-size: 12px;
+    display: block;
   }
 }
 

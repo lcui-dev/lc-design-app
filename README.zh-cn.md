@@ -1,8 +1,8 @@
-# lcui-quick-start
+# lc-design-app
 
 ([English](README.md)/**中文**)
 
-**克隆并运行以快速查看LCUI的运行方式。**
+**克隆并运行以快速查看 LCUI 的运行方式以及 LC Design 组件库的效果。**
 
 ## 使用
 
@@ -21,10 +21,10 @@
 
 ```bash
 # 克隆这个仓库
-git clone https://github.com/lc-ui/lcui-quick-start
+git clone https://github.com/lc-ui/lc-design-app
 
 # 进入仓库
-cd lcui-quick-start
+cd lc-design-app
 
 # 安装 NodeJS 依赖包
 npm install
@@ -45,6 +45,7 @@ lcpkg run start --mode debug
 - 用于描述用户界面样式的 [.scss](https://sass-lang.com/guide) 文件。
 - 用于显示应用程序信息的 `about` 组件。
 - 实现了简单布局和交互的 `home` 视图。
+- 提供 [LC Design](https://github.com/lc-ui/lc-design) 组件库的一些组件效果预览的 `preview` 视图。
 
 ## 项目结构
 
