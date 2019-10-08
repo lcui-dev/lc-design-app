@@ -2,7 +2,7 @@
   "private": true,
   "name": "lc-design-app",
   "version": "0.1.0",
-  "description": "A minimal LCUI application",
+  "description": "A minimal LCUI application for preview LC Design component library",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
