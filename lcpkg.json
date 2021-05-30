@@ -3,9 +3,9 @@
   "version": "0.2.0",
   "description": "A minimal LCUI application for preview LC Design component library",
   "author": "lc-soft",
-  "homepage": "https://github.com/lc-ui/lcui-quick-start",
+  "homepage": "https://github.com/lc-ui/lc-design-app",
   "bugs": {
-    "url": "https://github.com/lc-ui/lcui-quick-start/issues"
+    "url": "https://github.com/lc-ui/lc-design-app/issues"
   },
   "arch": [
     "x86",
@@ -13,37 +13,43 @@
   ],
   "platform": [
     "windows",
-    "uwp",
     "linux"
   ],
   "mode": [
     "debug",
     "release"
   ],
-  "scripts": {
-    "build:bin": "node ./scripts/build-bin.js",
-    "build:css": "node ./scripts/build-css.js",
-    "configure": "node ./scripts/configure.js",
-    "run": "node ./scripts/run.js",
-    "start": "lcpkg run configure && lcpkg run build:bin && lcpkg run build:css && lcpkg run run"
+  "builder": {
+    "configureFiles": [
+      "include/version.h.in",
+      "CMakeLists.txt.in",
+      "xmake.lua.in"
+    ],
+    "hooks": {
+      "afterBuild": "lcpkg export --filter runtime --arch {{arch}} --mode {{mode}} app",
+      "beforeBuild": "lcpkg export --filter build --arch {{arch}} --mode {{mode}} vendor"
+    },
+    "linkDirs": [
+      "vendor/lib"
+    ]
   },
   "private": true,
   "dependencies": {
     "LCUI": {
-      "version": "v2.0.0",
-      "uri": "github:lc-soft/LCUI",
+      "version": "2.1.0",
       "resolved": {
-        "all": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x86-windows.lcpkg.zip",
-        "x64-uwp": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x64-uwp.lcpkg.zip",
-        "x64-windows": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x64-windows.lcpkg.zip",
-        "x86-uwp": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x86-uwp.lcpkg.zip",
-        "x86-windows": "https://github.com/lc-soft/LCUI/releases/download/v2.0.0/LCUI-2.0.0_x86-windows.lcpkg.zip"
+        "x64-uwp": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/LCUI-2.1.0_x64-uwp.lcpkg.zip",
+        "all": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/liblcui2_2.1.0-1_amd64.deb.zip",
+        "x64-windows": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/LCUI-2.1.0_x64-windows.lcpkg.zip",
+        "x86-uwp": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/LCUI-2.1.0_x86-uwp.lcpkg.zip",
+        "x86-windows": "https://github.com/lc-soft/LCUI/releases/download/v2.1.0/LCUI-2.1.0_x86-windows.lcpkg.zip"
       },
+      "sourceRequired": false,
+      "uri": "github:lc-soft/LCUI",
       "linkage": "auto"
     },
     "lc-design": {
-      "version": "v1.1.0",
-      "uri": "github:lc-ui/lc-design",
+      "version": "1.1.0",
       "resolved": {
         "x64-uwp": "https://github.com/lc-ui/lc-design/releases/download/v1.1.0/lc-design-1.1.0_x64-uwp.lcpkg.zip",
         "all": "https://github.com/lc-ui/lc-design/releases/download/v1.1.0/lc-design-demo.zip",
@@ -51,6 +57,7 @@
         "x86-uwp": "https://github.com/lc-ui/lc-design/releases/download/v1.1.0/lc-design-1.1.0_x86-uwp.lcpkg.zip",
         "x86-windows": "https://github.com/lc-ui/lc-design/releases/download/v1.1.0/lc-design-1.1.0_x86-windows.lcpkg.zip"
       },
+      "uri": "github:lc-ui/lc-design",
       "linkage": "auto"
     }
   }

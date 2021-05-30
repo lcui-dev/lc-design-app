@@ -2,6 +2,7 @@ build
 .xmake
 .vscode
 lcpkg
+vendor
 node_modules
 include/config.h
 include/version.h
@@ -9,10 +10,15 @@ app/app
 app/store.data
 app/assets/fonts
 app/assets/stylesheets
+scripts/*.json
+config/builder.json
 Release
 Debug
 CMakeLists.txt
-!src/**/**/CMakeLists.txt
+CMakeLists.txt.in
+xmake.lua
+xmake.lua.in
 *.pdb
 *.exe
 *.dll
+*.log
