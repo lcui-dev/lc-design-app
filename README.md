@@ -15,6 +15,10 @@ To clone and run this repository you'll need install the following tools on your
     npm install -g lcpkg
     lcpkg setup
     ```
+- [LCUI CLI](https://github.com/lc-ui/lcui-cli):
+    ```bash
+    npm install -g @lcui/cli
+    ```
 - [CMake](https://cmake.org/) or [XMake](https://xmake.io/)
 
 From your command line:
@@ -26,14 +30,14 @@ git clone https://github.com/lc-ui/lc-design-app
 # Go into the repository
 cd lc-design-app
 
-# Install NodeJS dependencies
-npm install
+# set up the development environment for project
+lcui setup
 
-# Install C/C++ dependencies for x64 CPU architecture
-lcpkg install --arch x64
+# build project
+lcui build
 
-# Run the app with debug mode
-lcpkg run start --mode debug
+# Run project
+lcui run
 ```
 
 ## What's included

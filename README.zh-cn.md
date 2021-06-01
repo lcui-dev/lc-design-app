@@ -15,6 +15,10 @@
     npm install -g lcpkg
     lcpkg setup
     ```
+- [LCUI CLI](https://github.com/lc-ui/lcui-cli):
+    ```bash
+    npm install -g @lcui/cli
+    ```
 - [CMake](https://cmake.org/) 或 [XMake](https://xmake.io/)
 
 之后，在你的终端里运行：
@@ -26,14 +30,14 @@ git clone https://github.com/lc-ui/lc-design-app
 # 进入仓库
 cd lc-design-app
 
-# 安装 NodeJS 依赖包
-npm install
+# 设置开发环境
+lcui setup
 
-# 安装适用于 x64 CPU 架构的 C/C++ 依赖库
-lcpkg install --arch x64
+# 构建项目
+lcui build
 
-# 以调试模式运行应用程序
-lcpkg run start --mode debug
+# 运行项目
+lcui run
 ```
 
 ## 包括什么
